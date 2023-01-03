@@ -1,4 +1,5 @@
 <?php
+
 require_once "../MySQL.php";
 session_start();
 if (!isset($_SESSION["admin"])) {
@@ -14,9 +15,14 @@ if (!isset($_SESSION["admin"])) {
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+          content="Sipway teacher is super flexible, powerful, clean &amp; modern responsive bootstrap 5 teacher template with unlimited possibilities.">
+    <meta name="keywords"
+          content="teacher template, Sipway teacher template, dashboard template, flat teacher template, responsive teacher template, web app">
+    <meta name="author" content="pixelstrap">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - All User</title>
+    <title>Sipway - All Teachers</title>
     <!-- Google font-->
     <link
             href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&amp;family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&amp;display=swap"
@@ -71,15 +77,15 @@ if (!isset($_SESSION["admin"])) {
         <div class="page-body">
 
             <div class="title-header title-header-1">
-                <h5>All Admins</h5>
+                <h5>All teachers</h5>
                 <form class="d-inline-flex">
-                    <a href="add-new-academic-officer.php" class="align-items-center btn btn-theme">
+                    <a href="add-new-teacher.php" class="align-items-center btn btn-theme">
                         <i data-feather="plus-square"></i>Add New
                     </a>
                 </form>
             </div>
 
-            <!-- All Admin Table Start -->
+            <!-- All teacher Table Start -->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
@@ -89,7 +95,7 @@ if (!isset($_SESSION["admin"])) {
 
                                 <div class="mb-3 col-3 offset-9">
                                     <input type="text" class="form-control" placeholder="Search..."
-                                           onkeyup="searchAdmins(0)" id="admin-search">
+                                           onkeyup="searchTeachers(0)" id="teacher-search">
                                 </div>
 
                                 <div id="card-body">
@@ -120,27 +126,27 @@ if (!isset($_SESSION["admin"])) {
                                                     $page_no = 1;
                                                 }
 
-                                                $admin_rs = MySQL::search("SELECT * FROM admin");
-                                                $no_of_admins = $admin_rs->num_rows;
+                                                $teacher_rs = MySQL::search("SELECT * FROM teacher");
+                                                $no_of_teachers = $teacher_rs->num_rows;
 
                                                 $results_per_page = 10;
-                                                $no_of_pages = ceil($no_of_admins / $results_per_page);
+                                                $no_of_pages = ceil($no_of_teachers / $results_per_page);
                                                 $viewed_count = ((int)$page_no - 1) * $results_per_page;
 
-                                                $admin_rs2 = MySQL::search("SELECT * FROM admin ORDER BY creation_time DESC LIMIT ${results_per_page} OFFSET ${viewed_count}");
+                                                $teacher_rs2 = MySQL::search("SELECT * FROM teacher ORDER BY creation_time DESC LIMIT ${results_per_page} OFFSET ${viewed_count}");
 
                                                 $x = 1;
-                                                while ($admin = $admin_rs2->fetch_assoc()) {
+                                                while ($teacher = $teacher_rs2->fetch_assoc()) {
                                                     ?>
                                                     <tr>
 
 
                                                         <td class="switch-td mt-2">
                                                             <div class="form-check form-switch">
-                                                                <input id="admin_status_switch<?= $x ?>"
+                                                                <input id="teacher_status_switch<?= $x ?>"
                                                                        class="form-check-input" type="checkbox"
                                                                        role="switch"
-                                                                       onchange="changeAdminStatus('<?= $admin["email"] ?>', 'admin_status_switch<?= $x ?>')" <?= ($admin["status"] == 1) ? "checked" : "" ?>>
+                                                                       onchange="changeTeacherStatus('<?= $teacher["email"] ?>', 'teacher_status_switch<?= $x ?>')" <?= ($teacher["status"] == 1) ? "checked" : "" ?>>
                                                             </div>
 
                                                         </td>
@@ -148,38 +154,44 @@ if (!isset($_SESSION["admin"])) {
 
                                                         <td>
                                                     <span>
-                                                    <img src="../<?= ($admin['profile_img'] != null) ? $admin['profile_img'] : 'assets/images/profile/user.png' ?>"
+                                                    <img src="../<?= ($teacher['profile_img'] != null) ? $teacher['profile_img'] : 'assets/images/profile/user.png' ?>"
                                                          alt="users">
                                                     </span>
                                                         </td>
 
                                                         <td>
                                                             <a href="javascript:void(0)">
-                                                                <span class="d-block "><?= $admin['first_name'] . ' ' . $admin['last_name'] ?></span>
-                                                                <span class="text-muted">Admin</span>
+                                                                <span class="d-block "><?= $teacher['first_name'] . ' ' . $teacher['last_name'] ?></span>
+                                                                <span class="text-muted">teacher</span>
                                                             </a>
                                                         </td>
 
-                                                        <td><?= $admin['mobile'] ?></td>
+                                                        <td><?= $teacher['mobile'] ?></td>
 
-                                                        <td><?= $admin['email'] ?></td>
+                                                        <td><?= $teacher['email'] ?></td>
 
-                                                        <td class="<?= ($admin['is_verified'] == 1) ? "order-success" : "order-cancle" ?>"><?= ($admin['is_verified'] == 1) ? "<span>Verified</span>" : '<span>Not Verified</span>' ?></td>
+                                                        <td class="<?= ($teacher['is_verified'] == 1) ? "order-success" : "order-cancle" ?>"><?= ($teacher['is_verified'] == 1) ? "<span>Verified</span>" : '<span>Not Verified</span>' ?></td>
 
-                                                        <td><?= $admin['creation_time'] ?></td>
+                                                        <td><?= $teacher['creation_time'] ?></td>
 
                                                         <td>
                                                             <ul>
                                                                 <li>
-                                                                    <!--data-bs-toggle="modal" data-bs-target="#update-admin"-->
+                                                                    <!--data-bs-toggle="modal" data-bs-target="#update-teacher"-->
                                                                     <button class="table-button text-primary"
-                                                                            onclick='showAdminUpdateModal(<?= json_encode($admin) ?>)'>
+                                                                            onclick='showTeacherUpdateModal(<?= json_encode($teacher) ?>)'>
                                                                         <span class="lnr lnr-pencil"></span>
                                                                     </button>
                                                                 </li>
 
                                                                 <li>
-                                                                    <button onclick="showAdminDeleteConfirmModal('<?= $admin["email"] ?>')"
+                                                                    <button onclick="showTeachersSubjectModal('<?= $teacher['email'] ?>')"
+                                                                            class="table-button text-info">
+                                                                        <span class="lnr lnr-book"></span>
+                                                                    </button>
+                                                                </li>
+                                                                <li>
+                                                                    <button onclick="showTeacherDeleteConfirmModal('<?= $teacher["email"] ?>')"
                                                                             class="table-button text-danger">
                                                                         <span class="lnr lnr-trash"></span>
                                                                     </button>
@@ -242,7 +254,7 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
             </div>
-            <!-- All Admin Table Ends-->
+            <!-- All teacher Table Ends-->
 
             <div class="container-fluid">
                 <!-- footer start-->
@@ -262,12 +274,12 @@ if (!isset($_SESSION["admin"])) {
 </div>
 
 <!-- Modal Start -->
-<div class="modal fade" id="update-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="admin-update" aria-hidden="true">
+<div class="modal fade" id="update-teacher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="teacher-update" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <h5 class="modal-title" id="staticBackdropLabel">Update Admin</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Update teacher</h5>
 
                 <form>
                     <div class="mb-3">
@@ -295,7 +307,7 @@ if (!isset($_SESSION["admin"])) {
 
                 <div class="button-box">
                     <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn--yes btn-primary" onclick="updateAdmin()">Update</button>
+                    <button type="button" class="btn btn--yes btn-primary" onclick="updateTeacher()">Update</button>
                 </div>
             </div>
         </div>
@@ -304,13 +316,84 @@ if (!isset($_SESSION["admin"])) {
 <!-- Modal End -->
 
 <!-- Modal Start -->
+<div class="modal fade" id="assign-new-subject-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="teacher-update" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title" id="staticBackdropLabel">Assign New Subject</h5>
+
+                <form id="assign-new-subject-form" onsubmit="assignNewSubject(event)">
+                    <div class="mb-2">
+                        <span class="text-danger fw-bold" id="ans-err-msg"></span>
+                    </div>
+                    <div>
+                        <input type="text" class="d-none" name="ans-email" id="ans-email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fname" class="form-label">Subject</label>
+                        <select name="ans-subject" id="ans-subject" class="form-select">
+                            <option value="0">Select Subject</option>
+                            <?php
+
+                            $subjectRs = MySQL::search("SELECT * FROM subject");
+                            while ($subject = $subjectRs->fetch_assoc()) {
+                                ?>
+                                <option value="<?= $subject['id'] ?>"><?= $subject['subject_name'] ?></option>
+                                <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <div class="button-box">
+                        <button type="submit" class="btn btn--yes btn-primary">Assign</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End -->
+
+<!-- Modal Start -->
+<div class="modal fade" id="manage-subjects" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="teacher-update" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5 class="modal-title" id="staticBackdropLabel">Update teacher</h5>
+
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn btn-theme" onclick="showAssignNewSubjectModal()">
+                        <i data-feather="plus-square"></i>Add New
+                    </button>
+                </div>
+
+
+                <div id="subjects-modal-table">
+
+                </div>
+
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal End -->
+
+
+<!-- Modal Start -->
 <div class="modal fade" id="delete-confirm-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <h5 class="modal-title">Delete Account</h5>
-                <p>Are you sure you want to delete this admin account?</p>
+                <p>Are you sure you want to delete this teacher account?</p>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="button-box">

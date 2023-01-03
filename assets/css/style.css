@@ -41138,6 +41138,12 @@ body[class*="dark-"] .for-light {
     margin-top: 0 !important
 }
 
+.switch-td {
+    border: none;
+    display: flex;
+}
+
+
 .table-button {
     background: transparent;
     border: none;

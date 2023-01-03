@@ -66,8 +66,8 @@ if (isset($_GET['admin_code'])) {
         ?>
 
         <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
-            <div class="login-title">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <div class="login-title d-flex justify-content-center flex-column align-items-center">
+                <svg height="200px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                     <g id="Glyph">
                         <g data-name="Glyph" id="Glyph-2">
                             <path fill="#e22454"
@@ -78,7 +78,7 @@ if (isset($_GET['admin_code'])) {
                         </g>
                     </g>
                 </svg>
-                <h2 class="mt-3">Email Verification Failed!</h2>
+                <h2 class="mt-3">User has been already verified or verification failed!</h2>
             </div>
 
             <div class="mt-4">
@@ -94,7 +94,7 @@ if (isset($_GET['admin_code'])) {
     <div class="vh-100 d-flex flex-column justify-content-center align-items-center">
         <div class="login-title text-center">
             <svg baseProfile="tiny" height="200px" id="Layer_1" version="1.2" viewBox="0 0 24 24" xml:space="preserve"
-                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g>
+                 xmlns="http://www.w3.org/2000/svg"><g>
                     <path fill="#ffbe00"
                           d="M12,5.511c0.561,0,1.119,0.354,1.544,1.062l5.912,9.854C20.307,17.842,19.65,19,18,19H6c-1.65,0-2.307-1.159-1.456-2.573   l5.912-9.854C10.881,5.865,11.439,5.511,12,5.511 M12,3.511c-1.296,0-2.482,0.74-3.259,2.031l-5.912,9.856   c-0.786,1.309-0.872,2.705-0.235,3.83S4.473,21,6,21h12c1.527,0,2.77-0.646,3.406-1.771s0.551-2.521-0.235-3.83l-5.912-9.854   C14.482,4.251,13.296,3.511,12,3.511z"/>
                 </g>

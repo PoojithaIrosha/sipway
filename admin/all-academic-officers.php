@@ -16,7 +16,7 @@ if (!isset($_SESSION["admin"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - All User</title>
+    <title>Sipway - All Academic Officers</title>
     <!-- Google font-->
     <link
             href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&amp;family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&amp;display=swap"
@@ -71,15 +71,15 @@ if (!isset($_SESSION["admin"])) {
         <div class="page-body">
 
             <div class="title-header title-header-1">
-                <h5>All Admins</h5>
+                <h5>All Academic Officers</h5>
                 <form class="d-inline-flex">
-                    <a href="add-new-academic-officer.php" class="align-items-center btn btn-theme">
+                    <a href="add-new-admin.php" class="align-items-center btn btn-theme">
                         <i data-feather="plus-square"></i>Add New
                     </a>
                 </form>
             </div>
 
-            <!-- All Admin Table Start -->
+            <!-- All academic Table Start -->
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12">
@@ -89,7 +89,7 @@ if (!isset($_SESSION["admin"])) {
 
                                 <div class="mb-3 col-3 offset-9">
                                     <input type="text" class="form-control" placeholder="Search..."
-                                           onkeyup="searchAdmins(0)" id="admin-search">
+                                           onkeyup="searchAcademics(0)" id="academic-search">
                                 </div>
 
                                 <div id="card-body">
@@ -120,66 +120,63 @@ if (!isset($_SESSION["admin"])) {
                                                     $page_no = 1;
                                                 }
 
-                                                $admin_rs = MySQL::search("SELECT * FROM admin");
-                                                $no_of_admins = $admin_rs->num_rows;
+                                                $academic_rs = MySQL::search("SELECT * FROM academic_officer");
+                                                $no_of_academics = $academic_rs->num_rows;
 
                                                 $results_per_page = 10;
-                                                $no_of_pages = ceil($no_of_admins / $results_per_page);
+                                                $no_of_pages = ceil($no_of_academics / $results_per_page);
                                                 $viewed_count = ((int)$page_no - 1) * $results_per_page;
 
-                                                $admin_rs2 = MySQL::search("SELECT * FROM admin ORDER BY creation_time DESC LIMIT ${results_per_page} OFFSET ${viewed_count}");
+                                                $academic_rs2 = MySQL::search("SELECT * FROM academic_officer ORDER BY creation_time DESC LIMIT ${results_per_page} OFFSET ${viewed_count}");
 
                                                 $x = 1;
-                                                while ($admin = $admin_rs2->fetch_assoc()) {
+                                                while ($academic = $academic_rs2->fetch_assoc()) {
                                                     ?>
                                                     <tr>
 
-
                                                         <td class="switch-td mt-2">
                                                             <div class="form-check form-switch">
-                                                                <input id="admin_status_switch<?= $x ?>"
+                                                                <input id="academic_status_switch<?= $x ?>"
                                                                        class="form-check-input" type="checkbox"
                                                                        role="switch"
-                                                                       onchange="changeAdminStatus('<?= $admin["email"] ?>', 'admin_status_switch<?= $x ?>')" <?= ($admin["status"] == 1) ? "checked" : "" ?>>
+                                                                       onchange="changeAcademicStatus('<?= $academic["email"] ?>', 'academic_status_switch<?= $x ?>')" <?= ($academic["status"] == 1) ? "checked" : "" ?>>
                                                             </div>
-
                                                         </td>
-
 
                                                         <td>
                                                     <span>
-                                                    <img src="../<?= ($admin['profile_img'] != null) ? $admin['profile_img'] : 'assets/images/profile/user.png' ?>"
+                                                    <img src="../<?= ($academic['profile_img'] != null) ? $academic['profile_img'] : 'assets/images/profile/user.png' ?>"
                                                          alt="users">
                                                     </span>
                                                         </td>
 
                                                         <td>
                                                             <a href="javascript:void(0)">
-                                                                <span class="d-block "><?= $admin['first_name'] . ' ' . $admin['last_name'] ?></span>
-                                                                <span class="text-muted">Admin</span>
+                                                                <span class="d-block "><?= $academic['first_name'] . ' ' . $academic['last_name'] ?></span>
+                                                                <span class="text-muted">Academic</span>
                                                             </a>
                                                         </td>
 
-                                                        <td><?= $admin['mobile'] ?></td>
+                                                        <td><?= $academic['mobile'] ?></td>
 
-                                                        <td><?= $admin['email'] ?></td>
+                                                        <td><?= $academic['email'] ?></td>
 
-                                                        <td class="<?= ($admin['is_verified'] == 1) ? "order-success" : "order-cancle" ?>"><?= ($admin['is_verified'] == 1) ? "<span>Verified</span>" : '<span>Not Verified</span>' ?></td>
+                                                        <td class="<?= ($academic['is_verified'] == 1) ? "order-success" : "order-cancle" ?>"><?= ($academic['is_verified'] == 1) ? "<span>Verified</span>" : '<span>Not Verified</span>' ?></td>
 
-                                                        <td><?= $admin['creation_time'] ?></td>
+                                                        <td><?= $academic['creation_time'] ?></td>
 
                                                         <td>
                                                             <ul>
                                                                 <li>
-                                                                    <!--data-bs-toggle="modal" data-bs-target="#update-admin"-->
+                                                                    <!--data-bs-toggle="modal" data-bs-target="#update-academic"-->
                                                                     <button class="table-button text-primary"
-                                                                            onclick='showAdminUpdateModal(<?= json_encode($admin) ?>)'>
+                                                                            onclick='showAcademicUpdateModal(<?= json_encode($academic) ?>)'>
                                                                         <span class="lnr lnr-pencil"></span>
                                                                     </button>
                                                                 </li>
 
                                                                 <li>
-                                                                    <button onclick="showAdminDeleteConfirmModal('<?= $admin["email"] ?>')"
+                                                                    <button onclick="showAcademicDeleteConfirmModal('<?= $academic["email"] ?>')"
                                                                             class="table-button text-danger">
                                                                         <span class="lnr lnr-trash"></span>
                                                                     </button>
@@ -242,7 +239,7 @@ if (!isset($_SESSION["admin"])) {
                     </div>
                 </div>
             </div>
-            <!-- All Admin Table Ends-->
+            <!-- All academic Table Ends-->
 
             <div class="container-fluid">
                 <!-- footer start-->
@@ -262,12 +259,12 @@ if (!isset($_SESSION["admin"])) {
 </div>
 
 <!-- Modal Start -->
-<div class="modal fade" id="update-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="admin-update" aria-hidden="true">
+<div class="modal fade" id="update-academic" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="academic-update" aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
-                <h5 class="modal-title" id="staticBackdropLabel">Update Admin</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">Update Academic Officer</h5>
 
                 <form>
                     <div class="mb-3">
@@ -295,7 +292,7 @@ if (!isset($_SESSION["admin"])) {
 
                 <div class="button-box">
                     <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn--yes btn-primary" onclick="updateAdmin()">Update</button>
+                    <button type="button" class="btn btn--yes btn-primary" onclick="updateAcademic()">Update</button>
                 </div>
             </div>
         </div>
@@ -310,7 +307,7 @@ if (!isset($_SESSION["admin"])) {
         <div class="modal-content">
             <div class="modal-body">
                 <h5 class="modal-title">Delete Account</h5>
-                <p>Are you sure you want to delete this admin account?</p>
+                <p>Are you sure you want to delete this academic account?</p>
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="button-box">

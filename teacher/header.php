@@ -53,7 +53,7 @@ require_once "../MySQL.php";
                 </li>
 
                 <li class="maximize">
-                    <a class="text-dark" href="javascript:void(0)!" onclick="javascript:toggleFullScreen()">
+                    <a class="text-dark" href="javascript:void(0)" onclick="javascript:toggleFullScreen()">
                         <span class="lnr lnr-frame-expand"></span>
                     </a>
                 </li>
@@ -75,12 +75,6 @@ require_once "../MySQL.php";
 
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
-                        <li>
-                            <a href="all-admins.php">
-                                <i data-feather="users"></i>
-                                <span>Admins</span>
-                            </a>
-                        </li>
                         <li>
                             <a href="support-ticket.html">
                                 <i data-feather="phone"></i>

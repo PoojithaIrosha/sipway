@@ -2,12 +2,12 @@
 $e = '';
 $p = '';
 
-if (isset($_COOKIE["ae"])) {
-    $e = $_COOKIE["ae"];
+if (isset($_COOKIE["te"])) {
+    $e = $_COOKIE["te"];
 }
 
-if (isset($_COOKIE["ap"])) {
-    $p = $_COOKIE["ap"];
+if (isset($_COOKIE["tp"])) {
+    $p = $_COOKIE["tp"];
 }
 
 ?>
@@ -49,7 +49,7 @@ if (isset($_COOKIE["ap"])) {
                     <form class="box" id="login-form" onsubmit="adminLogin(event)">
 
                         <div class="login-title">
-                            <h2>Admin Login</h2>
+                            <h2>Teacher Login</h2>
                         </div>
 
                         <div class="input">
