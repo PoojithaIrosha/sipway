@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "../MySQL.php";
-if (!isset($_SESSION["admin"])) {
+if (!isset($_SESSION["teacher"])) {
     header("Location: login.php");
     exit();
 }
@@ -100,15 +100,15 @@ if (!isset($_SESSION["admin"])) {
                                             <div class="d-flex flex-column justify-content-center align-items-center">
                                                 <?php
 
-                                                $admin_rs = MySQL::search("SELECT * FROM admin WHERE email = '" . $_SESSION["admin"]["email"] . "'");
-                                                $admin_data = $admin_rs->fetch_assoc();
+                                                $teacher_rs = MySQL::search("SELECT * FROM teacher WHERE email = '" . $_SESSION["teacher"]["email"] . "'");
+                                                $teacher_data = $teacher_rs->fetch_assoc();
                                                 ?>
                                                 <img style="height: 200px;"
-                                                     src="../<?= ($admin_data['profile_img'] != '') ? $admin_data['profile_img'] : "assets/images/user/2.png" ?>"
-                                                     id="admin-profile-img-tag">
+                                                     src="../<?= ($teacher_data['profile_img'] != '') ? $teacher_data['profile_img'] : "assets/images/profile/user.png" ?>"
+                                                     id="teacher-profile-img-tag">
                                                 <div class="mt-3">
                                                     <input type="file" id="profile-img" class="d-none" accept="image/*"
-                                                           onchange="updateAdminProfileImg()">
+                                                           onchange="updateTeacherProfileImg()">
                                                     <label for="profile-img" class="btn btn-dark">UPLOAD PROFILE</label>
                                                 </div>
                                             </div>
@@ -122,11 +122,12 @@ if (!isset($_SESSION["admin"])) {
 
                                         <div class="card-body">
                                             <div class="card-header-2 mb-3">
-                                                <h5>Admin Details</h5>
+                                                <h5>Teacher Details</h5>
                                             </div>
 
                                             <!-- Accordion Starts -->
                                             <div class="accordion" id="accordionExample">
+
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingOne">
                                                         <button class="accordion-button" type="button"
@@ -140,7 +141,7 @@ if (!isset($_SESSION["admin"])) {
                                                          data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
                                                             <!-- Form Starts -->
-                                                            <div id="admin-profile-details-form"
+                                                            <div id="teacher-profile-details-form"
                                                                  class="theme-form theme-form-2 mega-form">
                                                                 <div class="row">
 
@@ -151,8 +152,8 @@ if (!isset($_SESSION["admin"])) {
 
                                                                     <?php
 
-                                                                    $admin_rs = MySQL::search("SELECT * FROM admin WHERE email = '" . $_SESSION['admin']['email'] . "'");
-                                                                    $admin = $admin_rs->fetch_assoc();
+                                                                    $teacher_rs = MySQL::search("SELECT * FROM teacher WHERE email = '" . $_SESSION['teacher']['email'] . "'");
+                                                                    $teacher = $teacher_rs->fetch_assoc();
                                                                     ?>
 
                                                                     <div class="mb-4 row align-items-center">
@@ -161,7 +162,7 @@ if (!isset($_SESSION["admin"])) {
                                                                         <div class="col-sm-10">
                                                                             <input class="form-control" type="text"
                                                                                    id="fname"
-                                                                                   value="<?= $admin['first_name'] ?>"
+                                                                                   value="<?= $teacher['first_name'] ?>"
                                                                                    placeholder="Enter Your First Name">
                                                                         </div>
                                                                     </div>
@@ -172,7 +173,7 @@ if (!isset($_SESSION["admin"])) {
                                                                         <div class="col-sm-10">
                                                                             <input class="form-control" type="text"
                                                                                    id="lname"
-                                                                                   value="<?= $admin['last_name'] ?>"
+                                                                                   value="<?= $teacher['last_name'] ?>"
                                                                                    placeholder="Enter Your Last Name">
                                                                         </div>
                                                                     </div>
@@ -183,7 +184,7 @@ if (!isset($_SESSION["admin"])) {
                                                                         <div class="col-sm-10">
                                                                             <input class="form-control" type="number"
                                                                                    id="mobile"
-                                                                                   value="<?= $admin['mobile'] ?>"
+                                                                                   value="<?= $teacher['mobile'] ?>"
                                                                                    placeholder="Enter Your Number">
                                                                         </div>
                                                                     </div>
@@ -194,14 +195,14 @@ if (!isset($_SESSION["admin"])) {
                                                                         <div class="col-sm-10">
                                                                             <input disabled class="form-control"
                                                                                    type="email" id="aemail"
-                                                                                   value="<?= $admin['email'] ?>"
+                                                                                   value="<?= $teacher['email'] ?>"
                                                                                    placeholder="Enter Your Email Address">
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="mb-4 row align-items-center">
                                                                         <div class="col-sm-12 d-flex justify-content-end">
-                                                                            <button onclick="updateAdmin()"
+                                                                            <button onclick="updateTeacher()"
                                                                                     type="submit"
                                                                                     class="btn btn-primary">UPDATE
                                                                                 PROFILE
@@ -218,22 +219,76 @@ if (!isset($_SESSION["admin"])) {
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="accordion-item">
                                                     <h2 class="accordion-header" id="headingTwo">
                                                         <button class="accordion-button collapsed" type="button"
                                                                 data-bs-toggle="collapse" data-bs-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo">
-                                                            Reset Password
+                                                            Subjects
                                                         </button>
                                                     </h2>
                                                     <div id="collapseTwo" class="accordion-collapse collapse"
                                                          aria-labelledby="headingTwo"
                                                          data-bs-parent="#accordionExample">
                                                         <div class="accordion-body">
+
+                                                            <div class="table-responsive table-desi">
+                                                                <table class="user-table table table-striped all-package">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Subject</th>
+                                                                        <th>Year</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <?php
+
+                                                                    $thsRs = MySQL::search("SELECT * FROM teacher_has_subject JOIN subject s on s.id = teacher_has_subject.subject_id JOIN year y on y.id = s.year_id WHERE teacher_email='" . $_SESSION['teacher']['email'] . "'");
+
+                                                                    $x = 1;
+                                                                    while ($thsData = $thsRs->fetch_assoc()) {
+
+                                                                        ?>
+
+                                                                        <tr>
+                                                                            <td><?= $x ?></td>
+                                                                            <td><?= $thsData['subject_name'] ?></td>
+                                                                            <td><?= $thsData['year_name'] ?></td>
+                                                                        </tr>
+
+                                                                        <?php
+                                                                        $x++;
+                                                                    }
+                                                                    ?>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="accordion-item">
+
+                                                    <h2 class="accordion-header" id="headingThree">
+                                                        <button class="accordion-button collapsed" type="button"
+                                                                data-bs-toggle="collapse"
+                                                                data-bs-target="#collapseThree"
+                                                                aria-expanded="false" aria-controls="collapseThree">
+                                                            Reset Password
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                                         aria-labelledby="headingThree"
+                                                         data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
                                                             <!--Form Starts-->
-                                                            <form id="admin-reset-pass-form"
+                                                            <form id="teacher-reset-pass-form"
                                                                   class="theme-form theme-form-2 mega-form"
-                                                                  onsubmit="resetAdminPassword(event)">
+                                                                  onsubmit="resetTeacherPassword(event)">
                                                                 <div class="row">
 
                                                                     <div class="my-2">
@@ -389,8 +444,8 @@ if (!isset($_SESSION["admin"])) {
 <!-- Theme js-->
 <script src="../assets/js/script.js"></script>
 
-<!-- Admin Js -->
-<script src="../assets/js/admin.js"></script>
-
+<!-- Teacher js -->
+<script src="../assets/js/teacher.js"></script>
 </body>
+
 </html>

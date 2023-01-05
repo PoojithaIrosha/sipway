@@ -8,7 +8,7 @@
 
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Login</title>
+    <title>Sipway - Admin Reset Password</title>
 
     <!-- Google font-->
     <link
@@ -86,6 +86,10 @@
 
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+
+    <!-- Admin Js -->
+    <script src="../assets/js/admin.js"></script>
+
 </div>
 </body>
 

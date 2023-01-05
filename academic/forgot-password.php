@@ -70,8 +70,8 @@
 <!-- Theme js-->
 <script src="../assets/js/script.js"></script>
 
-<!-- Admin Js -->
-<script src="../assets/js/admin.js"></script>
+<!-- Teacher Js -->
+<script src="../assets/js/teacher.js"></script>
 </body>
 
 </html>

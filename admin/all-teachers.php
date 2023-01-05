@@ -448,6 +448,9 @@ if (!isset($_SESSION["admin"])) {
 
 <!-- Theme js -->
 <script src="../assets/js/script.js"></script>
+
+<!-- Admin Js -->
+<script src="../assets/js/admin.js"></script>
 </body>
 
 </html>

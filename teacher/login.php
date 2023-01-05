@@ -22,7 +22,7 @@ if (isset($_COOKIE["tp"])) {
 
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Login</title>
+    <title>Sipway - Teacher Login</title>
 
     <!-- Google font-->
     <link
@@ -46,7 +46,7 @@ if (isset($_COOKIE["tp"])) {
         <div class="col-12 p-0">
             <div class="login-section">
                 <div class="materialContainer">
-                    <form class="box" id="login-form" onsubmit="adminLogin(event)">
+                    <form class="box" id="login-form" onsubmit="teacherLogin(event)">
 
                         <div class="login-title">
                             <h2>Teacher Login</h2>
@@ -93,6 +93,9 @@ if (isset($_COOKIE["tp"])) {
 
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
+
+    <!-- Teacher js -->
+    <script src="../assets/js/teacher.js"></script>
 </div>
 </body>
 

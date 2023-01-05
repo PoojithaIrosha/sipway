@@ -2,12 +2,12 @@
 $e = '';
 $p = '';
 
-if (isset($_COOKIE["ae"])) {
-    $e = $_COOKIE["ae"];
+if (isset($_COOKIE["ace"])) {
+    $e = $_COOKIE["ace"];
 }
 
-if (isset($_COOKIE["ap"])) {
-    $p = $_COOKIE["ap"];
+if (isset($_COOKIE["acp"])) {
+    $p = $_COOKIE["acp"];
 }
 
 ?>
@@ -22,7 +22,7 @@ if (isset($_COOKIE["ap"])) {
 
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Admin Login</title>
+    <title>Sipway - Academic Login</title>
 
     <!-- Google font-->
     <link
@@ -46,10 +46,10 @@ if (isset($_COOKIE["ap"])) {
         <div class="col-12 p-0">
             <div class="login-section">
                 <div class="materialContainer">
-                    <form class="box" id="login-form" onsubmit="adminLogin(event)">
+                    <form class="box" id="login-form" onsubmit="academicLogin(event)">
 
                         <div class="login-title">
-                            <h2>Admin Login</h2>
+                            <h2>Academic Login</h2>
                         </div>
 
                         <div class="input">
@@ -94,9 +94,8 @@ if (isset($_COOKIE["ap"])) {
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
 
-    <!-- Admin Js -->
-    <script src="../assets/js/admin.js"></script>
-
+    <!-- Teacher js -->
+    <script src="../assets/js/academic.js"></script>
 </div>
 </body>
 

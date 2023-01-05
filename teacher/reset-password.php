@@ -1,17 +1,3 @@
-<?php
-$e = '';
-$p = '';
-
-if (isset($_COOKIE["ae"])) {
-    $e = $_COOKIE["ae"];
-}
-
-if (isset($_COOKIE["ap"])) {
-    $p = $_COOKIE["ap"];
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +8,7 @@ if (isset($_COOKIE["ap"])) {
 
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Admin Login</title>
+    <title>Sipway - Teacher Reset Password</title>
 
     <!-- Google font-->
     <link
@@ -46,45 +32,53 @@ if (isset($_COOKIE["ap"])) {
         <div class="col-12 p-0">
             <div class="login-section">
                 <div class="materialContainer">
-                    <form class="box" id="login-form" onsubmit="adminLogin(event)">
+                    <form class="box" id="pass-reset-form"
+                          onsubmit="forgotTeacherPassword(event, '<?= $_GET['vc'] ?>')">
 
                         <div class="login-title">
-                            <h2>Admin Login</h2>
+                            <h2>Password Reset</h2>
                         </div>
 
                         <div class="input">
-                            <label for="name" <?= ($e != '') ? 'style="line-height: 18px; font-weight: 100; top: 0px;"' : '' ?>>Username</label>
-                            <input type="text" name="name" id="name" value="<?= $e ?>">
-                            <span class="text-danger mt-3" id="name-err"></span>
+                            <label for="new-pass">New Password</label>
+                            <input type="password" name="new-pass" id="new-pass">
                         </div>
 
                         <div class="input mb-4">
-                            <label for="pass" <?= ($p != '') ? 'style="line-height: 18px; font-weight: 100; top: 0px;"' : '' ?>>Password</label>
-                            <input type="password" name="pass" id="pass" value="<?= $p ?>">
-                            <span class="text-danger mt-3" id="pass-err"></span>
+                            <label for="confirm-pass">Confirm Password</label>
+                            <input type="password" name="confirm-pass" id="confirm-pass">
                         </div>
-
                         <div>
-                            <div class="pass-remember">
-                                <input type="checkbox" name="remember"
-                                       id="remember" <?= ($e != '' && $p != '') ? 'checked' : '' ?>/>
-                                <label for="remember">Remember Me</label>
-                            </div>
-                            <a href="forgot-password.php" class="pass-forgot">Forgot your password?</a>
+                            <span class="text-danger" id="pass-err"></span>
                         </div>
-
                         <div class="button login">
-                            <button>
-                                <span>Log In</span>
+                            <button type="submit">
+                                <span>Reset Password</span>
                             </button>
                         </div>
 
-                        <p>All rights reserved by <a href="#">Sipway</a></p>
+                        <p>All rights reserved by <a href="login.php">Sipway</a></p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <!--Toast Start-->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3 z-index-9">
+        <div id="confirm-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="../assets/images/logo/logo.png" class="rounded me-2" alt="...">
+                <strong class="me-auto">SipWay</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+
+            </div>
+        </div>
+    </div>
+    <!--Toast Ends-->
+
     <!-- latest jquery-->
     <script src="../assets/js/jquery-3.6.0.min.js"></script>
 
@@ -94,8 +88,8 @@ if (isset($_COOKIE["ap"])) {
     <!-- Theme js-->
     <script src="../assets/js/script.js"></script>
 
-    <!-- Admin Js -->
-    <script src="../assets/js/admin.js"></script>
+    <!-- Teacher Js -->
+    <script src="../assets/js/teacher.js"></script>
 
 </div>
 </body>
