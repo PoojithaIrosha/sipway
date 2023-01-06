@@ -1,5 +1,5 @@
 /*----------------------------------------
- Admin START
+ Admin
  ----------------------------------------*/
 
 function adminLogin(evt) {
@@ -465,20 +465,22 @@ function registerTeacher(subList) {
     const req = new XMLHttpRequest();
     req.onreadystatechange = () => {
         if (req.readyState === 4 && req.status === 200) {
+            document.getElementById('register-btn').classList.remove('d-none');
+            document.getElementById('loading-btn').classList.add('d-none');
+
             if (req.responseText === 'success') {
-
-            } else {
-                console.log(req.responseText);
-            }
-
-            if (req.responseText === "success") {
                 document.getElementById("register_form_err").innerHTML = "";
+                document.getElementById('teacher-register-form').reset();
 
                 document.querySelector(".toast-body").innerHTML = "Accounted created successfully & email sent.";
                 new bootstrap.Toast(document.getElementById('confirm-toast')).show();
             } else {
-                document.getElementById("register_form_err").innerHTML = req.responseText;
+                document.getElementById("register_form_err").innerHTML = txt;
             }
+
+        } else {
+            document.getElementById('register-btn').classList.add('d-none');
+            document.getElementById('loading-btn').classList.remove('d-none');
         }
     }
 
@@ -654,6 +656,12 @@ function showStudentUpdateModal(student) {
     document.getElementById("aemail").value = student['email'];
     document.getElementById("batch").value = student['batch_id'];
 
+    if (student['payment_status'] == 0) {
+        document.getElementById("payment-status-not-paid").checked = true;
+    } else if (student['payment_status'] == 1) {
+        document.getElementById("payment-status-paid").checked = true;
+    }
+
     studentUpdateModal = new bootstrap.Modal(document.getElementById("update-student"));
     studentUpdateModal.show();
 }
@@ -665,12 +673,20 @@ function updateStudent() {
     const email = document.getElementById("aemail");
     const batch = document.getElementById("batch");
 
+    let payment_status;
+    if (document.getElementById("payment-status-paid").checked) {
+        payment_status = 1;
+    } else if (document.getElementById("payment-status-not-paid").checked) {
+        payment_status = 0;
+    }
+
     const form = new FormData();
     form.append('fname', fname.value);
     form.append('lname', lname.value);
     form.append('mobile', mobile.value);
     form.append('email', email.value);
     form.append('batch', batch.value);
+    form.append('payment_status', payment_status);
 
     const req = new XMLHttpRequest();
     req.onreadystatechange = () => {

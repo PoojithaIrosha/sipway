@@ -71,40 +71,6 @@
                         </ul>
                     </li>
 
-                    <!--<li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                            <i class="fa fa-school text-danger fs-6 me-3"></i>
-                            <span>Academics</span>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="all-academic-officers.php">All Academic Officers</a>
-                            </li>
-                            <li>
-                                <a href="add-new-academic-officer.php">Add new academic officer</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                            <i class="fa fa-user-graduate text-danger fs-6 me-3"></i>
-                            <span>Students</span>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="all-students.php">All Students</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-main-title sidebar-main-title-2">
-                        <div>
-                            <h6 class="lan-1">Application</h6>
-                            <p class="lan-2">Ready To Use Apps</p>
-                        </div>
-                    </li>-->
-
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow">

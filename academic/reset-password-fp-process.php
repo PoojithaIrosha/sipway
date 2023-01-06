@@ -13,12 +13,12 @@ if (empty($vc)) {
     echo "Password mismatch. Re-check your new password";
 } else {
 
-    $teacherRs = MySQL::search("SELECT * FROM teacher WHERE verification_code='${vc}'");
+    $academicRs = MySQL::search("SELECT * FROM academic_officer WHERE verification_code='${vc}'");
 
-    if ($teacherRs->num_rows > 0) {
-        $teacherData = $teacherRs->fetch_assoc();
+    if ($academicRs->num_rows > 0) {
+        $academicData = $academicRs->fetch_assoc();
 
-        MySQL::iud("UPDATE teacher SET password='${newPass}', verification_code=null WHERE email = '" . $teacherData['email'] . "'");
+        MySQL::iud("UPDATE academic_officer SET password='${newPass}', verification_code=null WHERE email = '" . $academicData['email'] . "'");
         echo "success";
     } else {
         echo "Invalid credentials... Please use the link attached to the email";

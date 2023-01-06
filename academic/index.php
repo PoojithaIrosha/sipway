@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION["teacher"])) {
+require_once "../MySQL.php";
+if (!isset($_SESSION["academic"])) {
     header("Location: login.php");
     exit();
 }
@@ -15,7 +16,7 @@ if (!isset($_SESSION["teacher"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Admin Dashboard</title>
+    <title>Sipway - Academic Dashboard</title>
 
     <!-- Google font-->
     <link
@@ -367,7 +368,7 @@ if (!isset($_SESSION["teacher"])) {
 <script src="../assets/js/script.js"></script>
 
 <!-- Teacher js -->
-<script src="../assets/js/teacher.js"></script>
+<script src="../assets/js/academic.js"></script>
 </body>
 
 </html>

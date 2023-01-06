@@ -32,7 +32,7 @@
             $student_rs = MySQL::search("SELECT * FROM student WHERE email LIKE '${txt}%' OR mobile LIKE '%${txt}%'");
             $no_of_students = $student_rs->num_rows;
 
-            $results_per_page = 1;
+            $results_per_page = 10;
             $no_of_pages = ceil($no_of_students / $results_per_page);
             $viewed_count = ((int)$page_no - 1) * $results_per_page;
 
@@ -82,7 +82,7 @@
 
                     <td><?= $student['creation_time'] ?></td>
 
-                    <td class="<?= ($student['paid_status'] == 1) ? "order-success" : "order-pending" ?>"><?= ($student['paid_status'] == 1) ? "<span>Paid</span>" : '<span>Not Paid</span>' ?></td>
+                    <td class="<?= ($student['payment_status'] == 1) ? "order-success" : "order-pending" ?>"><?= ($student['payment_status'] == 1) ? "<span>Paid</span>" : '<span>Not Paid</span>' ?></td>
 
                     <td>
                         <ul>

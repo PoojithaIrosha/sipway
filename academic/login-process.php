@@ -20,7 +20,7 @@ if (empty($pass)) {
 }
 
 if (empty($result["name-err"]) && empty($result["pass-err"])) {
-    $user_rs = MySQL::search("SELECT * FROM teacher WHERE email = '${name}' AND password ='${pass}'");
+    $user_rs = MySQL::search("SELECT * FROM academic_officer WHERE email = '${name}' AND password ='${pass}'");
 
     if ($user_rs->num_rows > 0) {
 
@@ -31,14 +31,14 @@ if (empty($result["name-err"]) && empty($result["pass-err"])) {
             $result['pass-err'] = "Your account has been disabled.";
         } else {
             session_start();
-            $_SESSION['teacher'] = $user;
+            $_SESSION['academic'] = $user;
 
             if (!empty($_POST['remember'])) {
-                setcookie('te', $name, time() + (60 * 60 * 24 * 7));
-                setcookie('tp', $pass, time() + (60 * 60 * 24 * 7));
+                setcookie('ace', $name, time() + (60 * 60 * 24 * 7));
+                setcookie('acp', $pass, time() + (60 * 60 * 24 * 7));
             } else {
-                setcookie('te', '', -1);
-                setcookie('tp', '', -1);
+                setcookie('ace', '', -1);
+                setcookie('acp', '', -1);
             }
 
             $result['status'] = 'success';

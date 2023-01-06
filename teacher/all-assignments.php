@@ -82,8 +82,8 @@ if (!isset($_SESSION["teacher"])) {
 
             <?php
 
-            $teacherRs = MySQL::search("SELECT *, teacher_has_subject.id as ths_id, s.id as sub_id, teacher_has_subject.teacher_email as email  FROM teacher_has_subject JOIN subject s on teacher_has_subject.subject_id = s.id JOIN batch b on s.year_id = b.year_id WHERE teacher_email = '" . $_SESSION['teacher']['email'] . "'");
-            while ($teacherData = $teacherRs->fetch_assoc()) {
+            $subjectRs = MySQL::search("SELECT *, s.id as sub_id FROM teacher_has_subject JOIN subject s on teacher_has_subject.subject_id = s.id  WHERE teacher_email = '" . $_SESSION['teacher']['email'] . "'");
+            while ($teacherData = $subjectRs->fetch_assoc()) {
 
                 ?>
                 <!-- All Admin Table Start -->

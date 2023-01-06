@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Forgot PassWord</title>
+    <title>Sipway - Forgot Password</title>
 
     <!-- Google font-->
     <link
@@ -71,7 +71,7 @@
 <script src="../assets/js/script.js"></script>
 
 <!-- Teacher Js -->
-<script src="../assets/js/teacher.js"></script>
+<script src="../assets/js/academic.js"></script>
 </body>
 
 </html>

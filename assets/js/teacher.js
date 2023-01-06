@@ -250,10 +250,14 @@ function releaseAssignmentMarksToAcademic(assignmentId) {
         if (req.readyState === 4 && req.status === 200) {
             const txt = req.responseText;
             if (txt == 'success') {
-                window.location = 'all-assignments.php';
+                document.querySelector(".toast-body").innerHTML = "Assignment Marks Released to Academic";
+                setTimeout(() => {
+                    window.location = "all-assignments.php";
+                }, 1000);
             } else {
-                alert(txt);
+                document.querySelector(".toast-body").innerHTML = txt;
             }
+            new bootstrap.Toast(document.getElementById('confirm-toast')).show();
         }
     }
 

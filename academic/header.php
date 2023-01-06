@@ -60,17 +60,17 @@ require_once "../MySQL.php";
                 <li class="profile-nav onhover-dropdown pe-0 me-0">
                     <div class="media profile-media">
                         <?php
-                        $email = $_SESSION["teacher"]['email'];
-                        $teacher_rs = MySQL::search("SELECT * FROM teacher WHERE email = '${email}'");
-                        $teacher = $teacher_rs->fetch_assoc();
+                        $email = $_SESSION["academic"]['email'];
+                        $academicRs = MySQL::search("SELECT * FROM academic_officer WHERE email = '${email}'");
+                        $academic = $academicRs->fetch_assoc();
 
                         ?>
                         <img class="user-profile rounded-circle"
-                             src="../<?= ($teacher['profile_img'] != null) ? $teacher['profile_img'] : 'assets/images/profile/user.png' ?>"
+                             src="../<?= ($academic['profile_img'] != null) ? $academic['profile_img'] : 'assets/images/profile/user.png' ?>"
                              alt="">
                         <div class="user-name-hide media-body">
-                            <span><?= $_SESSION["teacher"]["first_name"] . " " . $_SESSION["teacher"]["last_name"] ?></span>
-                            <p class="mb-0 font-roboto">teacher<i class="middle fa fa-angle-down"></i></p>
+                            <span><?= $_SESSION["academic"]["first_name"] . " " . $_SESSION["academic"]["last_name"] ?></span>
+                            <p class="mb-0 font-roboto">Academic<i class="middle fa fa-angle-down"></i></p>
                         </div>
 
                     </div>
@@ -82,7 +82,7 @@ require_once "../MySQL.php";
                             </a>
                         </li>
                         <li>
-                            <a href="teacher-profile.php">
+                            <a href="academic-profile.php">
                                 <i data-feather="settings"></i>
                                 <span>Settings</span>
                             </a>

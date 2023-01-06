@@ -104,7 +104,7 @@ if (!isset($_SESSION["admin"])) {
                                                 $admin_data = $admin_rs->fetch_assoc();
                                                 ?>
                                                 <img style="height: 200px;"
-                                                     src="../<?= ($admin_data['profile_img'] != '') ? $admin_data['profile_img'] : "assets/images/user/2.png" ?>"
+                                                     src="../<?= ($admin_data['profile_img'] != '') ? $admin_data['profile_img'] : "assets/images/profile/user.png" ?>"
                                                      id="admin-profile-img-tag">
                                                 <div class="mt-3">
                                                     <input type="file" id="profile-img" class="d-none" accept="image/*"

@@ -173,7 +173,7 @@ if (!isset($_SESSION["admin"])) {
 
                                                         <td><?= $student['creation_time'] ?></td>
 
-                                                        <td class="<?= ($student['paid_status'] == 1) ? "order-success" : "order-pending" ?>"><?= ($student['paid_status'] == 1) ? "<span>Paid</span>" : '<span>Not Paid</span>' ?></td>
+                                                        <td class="<?= ($student['payment_status'] == 1) ? "order-success" : "order-pending" ?>"><?= ($student['payment_status'] == 1) ? "<span>Paid</span>" : '<span>Not Paid</span>' ?></td>
 
                                                         <td>
                                                             <ul>
@@ -292,6 +292,7 @@ if (!isset($_SESSION["admin"])) {
                         <label for="aemail" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="aemail" name="aemail" disabled>
                     </div>
+
                     <div class="mb-3">
                         <label for="batch" class="form-label">Batch</label>
                         <select class="form-select" id="batch">
@@ -306,6 +307,23 @@ if (!isset($_SESSION["admin"])) {
                             ?>
                         </select>
                     </div>
+
+                    <div>
+                        <label for="">Payment Status</label><br>
+                        <div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="payment-status"
+                                       id="payment-status-paid" value="1">
+                                <label class="form-check-label" for="payment-status-paid">Paid</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="payment-status"
+                                       id="payment-status-not-paid" value="0">
+                                <label class="form-check-label" for="payment-status-not-paid">Not Paid</label>
+                            </div>
+                        </div>
+                    </div>
+
                     <div>
                         <span id="err-msg" class="text-danger"></span>
                     </div>

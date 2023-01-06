@@ -15,7 +15,7 @@ if (!isset($_SESSION["teacher"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <title>Sipway - Admin Dashboard</title>
+    <title>Sipway - Teacher Dashboard</title>
 
     <!-- Google font-->
     <link
