@@ -175,7 +175,15 @@ function addNewLessonNote(evt) {
     req.onreadystatechange = () => {
         if (req.readyState === 4 && req.status === 200) {
             const txt = req.responseText;
-            alert(txt);
+
+            if (txt == 'success') {
+                document.getElementById("add-new-lesson-note-form").reset();
+                document.querySelector(".toast-body").innerHTML = "Lesson note uploaded successfully";
+                new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+            } else {
+                document.getElementById("err_msg").innerHTML = txt;
+            }
+
         }
     }
 
@@ -207,9 +215,15 @@ function addNewAssignment(evt) {
         if (req.readyState === 4 && req.status === 200) {
             const txt = req.responseText;
             if (txt === "success") {
-                window.location = 'all-assignments.php';
+                document.getElementById("add-new-assignment-form").reset();
+                document.querySelector(".toast-body").innerHTML = "Assignment uploaded successfully";
+                new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+
+                setTimeout(() => {
+                    window.location = 'all-assignments.php';
+                }, 1000)
             } else {
-                alert(txt);
+                document.getElementById("err_msg").innerHTML = txt;
             }
         }
     }
@@ -257,6 +271,7 @@ function releaseAssignmentMarksToAcademic(assignmentId) {
             } else {
                 document.querySelector(".toast-body").innerHTML = txt;
             }
+
             new bootstrap.Toast(document.getElementById('confirm-toast')).show();
         }
     }

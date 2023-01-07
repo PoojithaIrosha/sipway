@@ -89,6 +89,11 @@ if (!isset($_SESSION["teacher"])) {
                                               onsubmit="addNewAssignment(event)">
                                             <div class="row">
 
+                                                <div class="mb-3">
+                                                    <span id="err_msg" class="fw-bold text-danger"></span>
+                                                </div>
+
+
                                                 <div class="mb-4 row align-items-center">
                                                     <label class="form-label-title col-sm-2 mb-0">Assignment
                                                         Name</label>
@@ -194,6 +199,20 @@ if (!isset($_SESSION["teacher"])) {
 </div>
 <!-- page-wrapper End-->
 
+<!--Toast Start-->
+<div class="toast-container position-fixed bottom-0 end-0 p-3 z-index-9">
+    <div id="confirm-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src="../assets/images/logo/logo.png" class="rounded me-2" alt="...">
+            <strong class="me-auto">SipWay</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+
+        </div>
+    </div>
+</div>
+<!--Toast Ends-->
 
 <!-- latest js -->
 <script src="../assets/js/jquery-3.6.0.min.js"></script>

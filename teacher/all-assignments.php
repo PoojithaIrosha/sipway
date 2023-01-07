@@ -104,7 +104,7 @@ if (!isset($_SESSION["teacher"])) {
                                                 <table class="user-table table table-striped all-package">
                                                     <thead>
                                                     <tr>
-                                                        <th>#</th>
+                                                        <th>Number</th>
                                                         <th>Name</th>
                                                         <th>Batch</th>
                                                         <th>Deadline</th>

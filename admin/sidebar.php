@@ -98,6 +98,21 @@
                         </ul>
                     </li>
 
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                            <i class="fa fa-book-open    text-danger fs-6 me-3"></i>
+                            <span>Subjects</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li>
+                                <a href="all-subjects.php">All Subject</a>
+                            </li>
+                            <li>
+                                <a href="add-new-subject.php">Add new subject</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="sidebar-main-title sidebar-main-title-2">
                         <div>
                             <h6 class="lan-1">Application</h6>

@@ -95,8 +95,8 @@ if (!isset($_SESSION["student"])) {
                                         </div>
 
                                         <div>
-                                            <div class="table-responsive">
-                                                <table class="user-table table table-striped">
+                                            <div class="table-responsive table-desi">
+                                                <table class="user-table table table-striped all-package">
                                                     <thead>
                                                     <tr>
                                                         <th>#</th>

@@ -747,3 +747,105 @@ function searchStudents(page) {
     req.open('get', 'search-students-process.php?txt=' + txt.value + '&page=' + page, true);
     req.send();
 }
+
+
+let updateSubjectModal;
+
+function showSubjectUpdateModal(subject) {
+
+    document.getElementById("sub-id").value = subject['id'];
+    document.getElementById("sub-name").value = subject['subject_name'];
+    document.getElementById("year").value = subject['year_id'];
+
+    updateSubjectModal = new bootstrap.Modal(document.getElementById("update-subject"));
+    updateSubjectModal.show();
+
+}
+
+function updateSubject() {
+
+    const subId = document.getElementById("sub-id");
+    const subName = document.getElementById("sub-name");
+    const yearId = document.getElementById("year")
+
+    const form = new FormData();
+    form.append('sub-id', subId.value);
+    form.append('sub-name', subName.value);
+    form.append('year-id', yearId.value);
+
+    const req = new XMLHttpRequest();
+    req.onreadystatechange = () => {
+        if (req.readyState === 4 && req.status === 200) {
+            let txt = req.responseText;
+            if (txt === "success") {
+                updateSubjectModal.hide();
+                document.querySelector(".toast-body").innerHTML = "Subject updated successfully!";
+                new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                document.getElementById("err-msg").innerHTML = txt;
+            }
+        }
+    }
+    req.open('post', 'update-subject-process.php', true);
+    req.send(form);
+}
+
+function showSubjectDeleteConfirmModal(id) {
+    let modal = new bootstrap.Modal(document.getElementById("delete-confirm-modal"));
+    modal.show();
+
+    document.getElementById('modal-confirm-btn').addEventListener('click', () => {
+        modal.hide();
+        const req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+            if (req.readyState === 4 && req.status === 200) {
+                let txt = req.responseText;
+                if (txt === "success") {
+                    document.querySelector(".toast-body").innerHTML = "Subject deleted successfully";
+                    new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 2000);
+
+                }
+            }
+        }
+        req.open('get', 'delete-subject-process.php?subId=' + id, true);
+        req.send();
+    })
+}
+
+function registerSubject(evt) {
+    const req = new XMLHttpRequest();
+
+    req.onreadystatechange = () => {
+        if (req.readyState === 4 && req.status === 200) {
+            document.getElementById('register-btn').classList.remove('d-none');
+            document.getElementById('loading-btn').classList.add('d-none');
+
+            let txt = req.responseText;
+
+            if (txt == "success") {
+                document.getElementById("register_form_err").innerHTML = "";
+                document.getElementById('subject-register-form').reset();
+
+                document.querySelector(".toast-body").innerHTML = "New subject created successfully";
+                new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+            } else {
+                document.getElementById("register_form_err").innerHTML = txt;
+            }
+        } else {
+            document.getElementById('register-btn').classList.add('d-none');
+            document.getElementById('loading-btn').classList.remove('d-none');
+        }
+    }
+
+    req.open('post', 'register-subject-process.php', true);
+    req.send(new FormData(document.getElementById('subject-register-form')));
+
+    evt.preventDefault();
+}

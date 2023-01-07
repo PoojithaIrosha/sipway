@@ -100,7 +100,8 @@ if (!isset($_SESSION["admin"])) {
 
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel">
-                                                <div class="theme-form theme-form-2 mega-form">
+                                                <form id="teacher-register-form"
+                                                      class="theme-form theme-form-2 mega-form">
                                                     <div class="card-header-1">
                                                         <h5>Teacher Information</h5>
                                                     </div>
@@ -210,7 +211,7 @@ if (!isset($_SESSION["admin"])) {
                                                         </div>
 
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
 
                                         </div>

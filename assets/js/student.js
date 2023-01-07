@@ -171,6 +171,10 @@ function uploadAssignment(assId) {
                 document.querySelector(".toast-body").innerHTML = "Assignment Re-Uploaded Successfully!";
             }
             new bootstrap.Toast(document.getElementById('confirm-toast')).show();
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         }
     }
 
