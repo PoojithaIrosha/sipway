@@ -217,9 +217,13 @@ function sendForgotPasswordEmail(evt) {
             document.getElementById("send-btn").classList.remove('d-none');
 
             let txt = req.responseText;
+            console.log(txt)
             if (txt == "success") {
+                document.getElementById("err-msg-fp").innerHTML = "";
                 document.querySelector("#send-btn button").innerHTML = "Email Sent";
                 document.querySelector("#send-btn button").disabled = true;
+            } else {
+                document.getElementById("err-msg-fp").innerHTML = txt;
             }
         } else {
             document.getElementById("loading-btn").classList.remove('d-none');

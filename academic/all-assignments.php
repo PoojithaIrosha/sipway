@@ -215,68 +215,6 @@ if (!isset($_SESSION["academic"])) {
     <!-- Page Body End -->
 </div>
 
-<!-- Modal Start -->
-<div class="modal fade" id="update-admin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="admin-update" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5 class="modal-title" id="staticBackdropLabel">Update Admin</h5>
-
-                <form>
-                    <div class="mb-3">
-                        <label for="fname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="fname" name="fname">
-                    </div>
-                    <div class="mb-3">
-                        <label for="lname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lname" name="lname">
-                    </div>
-                    <div class="mb-3">
-                        <label for="mobile" class="form-label">Mobile</label>
-                        <input type="text" class="form-control" id="mobile" name="mobile">
-                    </div>
-                    <div class="mb-3">
-                        <label for="aemail" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="aemail" name="aemail" disabled>
-                    </div>
-                    <div>
-                        <span id="err-msg" class="text-danger"></span>
-                    </div>
-                </form>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                <div class="button-box">
-                    <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn--yes btn-primary" onclick="updateAdmin()">Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal End -->
-
-<!-- Modal Start -->
-<div class="modal fade" id="delete-confirm-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5 class="modal-title">Delete Account</h5>
-                <p>Are you sure you want to delete this admin account?</p>
-
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="button-box">
-                    <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn  btn--yes btn-primary" id="modal-confirm-btn">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal End -->
-
 <!--Toast Start-->
 <div class="toast-container position-fixed bottom-0 end-0 p-3 z-index-9">
     <div id="confirm-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

@@ -70,7 +70,7 @@ if (!isset($_SESSION["academic"])) {
         <div class="page-body">
 
             <div class="title-header title-header-1">
-                <h5>All students</h5>
+                <h5>All Batches</h5>
                 <form class="d-inline-flex">
                     <a href="add-new-batch.php" class="align-items-center btn btn-theme">
                         <i data-feather="plus-square"></i>Add New

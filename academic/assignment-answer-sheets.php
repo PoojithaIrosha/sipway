@@ -177,44 +177,6 @@ $assignmentId = $_GET['aid'];
     <!-- Page Body End -->
 </div>
 
-<!-- Modal Start -->
-<div class="modal fade" id="release-marks-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="release-marks" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5 class="modal-title" id="staticBackdropLabel">Release Student Assignment Marks</h5>
-
-                <form id="release-marks-form" onsubmit="releaseStudentAssignmentMarks(event)">
-                    <div>
-                        <span id="err-msg" class="text-danger"></span>
-                    </div>
-
-                    <div class="d-none">
-                        <input type="text" id="sha-id" name="sha-id"/>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="marks" class="form-label">Marks</label>
-                        <input type="text" class="form-control" id="marks" name="marks"
-                               placeholder="Enter Student's Marks"/>
-                    </div>
-
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-                    <div class="button-box mt-3 ">
-                        <button type="button" class="btn btn--no" data-bs-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn--yes btn-primary">Release Marks</button>
-                    </div>
-                </form>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal End -->
-
 <!--Toast Start-->
 <div class="toast-container position-fixed bottom-0 end-0 p-3 z-index-9">
     <div id="confirm-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

@@ -46,6 +46,9 @@
                 <label for="fpemail">Enter Email Address</label>
                 <input type="email" class="is-invalid" name="fpemail" id="fpemail">
             </div>
+            <div>
+                <span class="fw-bold text-danger" id="err-msg-fp"></span>
+            </div>
             <div class="button login button-1" id="send-btn">
                 <button type="submit">
                     <span>Send</span>

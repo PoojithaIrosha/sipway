@@ -152,11 +152,7 @@ if (!isset($_SESSION["student"])) {
                 </div>
                 <!-- All Admin Table Ends-->
                 <?php
-
-
             }
-
-
             ?>
 
 
@@ -220,7 +216,7 @@ if (!isset($_SESSION["student"])) {
 <!-- Theme js -->
 <script src="../assets/js/script.js"></script>
 
-<!-- Admin Js -->
+<!-- Teacher Js -->
 <script src="../assets/js/teacher.js"></script>
 
 </body>
