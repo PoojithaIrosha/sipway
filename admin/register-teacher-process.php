@@ -62,15 +62,15 @@ if (empty($fname)) {
             $mail->isSMTP(); // Send using SMTP
             $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
             $mail->SMTPAuth = true; // Enable SMTP authentication
-            $mail->Username = 'suwanisandunika0723@gmail.com'; // SMTP username TODO: Change the email
-            $mail->Password = 'asahbizcfgkwgmty'; // SMTP password // TODO: Change the password
+            $mail->Username = 'example@gmail.com'; // SMTP username TODO: Change the email
+            $mail->Password = 'password'; // SMTP password // TODO: Change the password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable implicit TLS encryption
             $mail->Port = 465; // TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             // Recipients
-            $mail->setFrom('suwanisandunika0723@gmail.com', 'Sipway'); // TODO: Change the email
+            $mail->setFrom('example@gmail.com', 'Sipway'); // TODO: Change the email
             $mail->addAddress($email, $fname . ' ' . $lname); // Add a recipient
-            $mail->addReplyTo('suwanisandunika0723@gmail.com', 'Sipway'); // TODO: Change the email
+            $mail->addReplyTo('example@gmail.com', 'Sipway'); // TODO: Change the email
 
             // Content
             $mail->isHTML(true); // Set email format to HTML
